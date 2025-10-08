@@ -3,9 +3,6 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { 
-  ChartBarIcon, 
-  ShieldCheckIcon, 
-  DocumentTextIcon,
   ArrowRightIcon
 } from '@heroicons/react/24/outline';
 import { AuroraBackground } from '@/components/ui/aurora-background';
@@ -63,7 +60,7 @@ export default function HeroSection() {
           className="mt-6"
         >
           <Link 
-            href="#assessment-portal"
+            href="/login"
             className="inline-flex items-center justify-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
             Start Assessment

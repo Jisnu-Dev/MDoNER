@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const Navigation: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -43,14 +44,16 @@ const Navigation: React.FC = () => {
             {/* Logo and Title Section */}
             <div className="flex items-center space-x-6">
               <div className="flex-shrink-0">
-                <Image
-                  src="/mdoner-logo-dark.png"
-                  alt="North Eastern Development Council - Ministry of Development of North Eastern Region"
-                  width={280}
-                  height={84}
-                  className="h-12 w-auto object-contain"
-                  priority
-                />
+                <Link href="/" className="cursor-pointer">
+                  <Image
+                    src="/mdoner-logo-dark.png"
+                    alt="North Eastern Development Council - Ministry of Development of North Eastern Region"
+                    width={280}
+                    height={84}
+                    className="h-12 w-auto object-contain hover:opacity-80 transition-opacity duration-200"
+                    priority
+                  />
+                </Link>
               </div>
               <div>
                 <h1 className="text-lg font-bold text-white leading-tight">
@@ -101,7 +104,7 @@ const Navigation: React.FC = () => {
                 {isLanguageMenuOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl z-50 border border-gray-200 overflow-hidden">
                     <div className="py-1">
-                      {languages.map((language, index) => (
+                      {languages.map((language) => (
                         <button
                           key={language.code}
                           onClick={() => {
@@ -134,9 +137,9 @@ const Navigation: React.FC = () => {
               </div>
 
               {/* CTA Button */}
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+              <Link href="/login" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                 Access Portal
-              </button>
+              </Link>
             </div>
 
             {/* Mobile menu button */}
@@ -175,9 +178,9 @@ const Navigation: React.FC = () => {
                   {item.name}
                 </button>
               ))}
-              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 mt-4">
+              <Link href="/login" className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 mt-4 block text-center">
                 Access Portal
-              </button>
+              </Link>
             </div>
           </div>
         )}

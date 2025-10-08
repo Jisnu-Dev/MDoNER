@@ -3,11 +3,8 @@
 import { motion } from 'framer-motion';
 import { 
   CpuChipIcon,
-  DocumentMagnifyingGlassIcon,
   ShieldCheckIcon,
-  ChartBarSquareIcon,
-  ClockIcon,
-  UsersIcon
+  ClockIcon
 } from '@heroicons/react/24/outline';
 import { GlowCard } from './ui/spotlight-card';
 
