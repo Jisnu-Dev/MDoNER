@@ -26,9 +26,9 @@ const Navigation: React.FC = () => {
   const [currentLanguage, setCurrentLanguage] = useState(languages[0]);
 
   return (
-    <header className="w-full bg-white shadow-lg">
+    <header className="w-full bg-gray-900 shadow-lg">
       {/* Top Government Bar */}
-      <div className="bg-blue-900 text-white">
+      <div className="bg-gray-800 text-white">
         <div className="w-full px-6 py-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
@@ -74,26 +74,26 @@ const Navigation: React.FC = () => {
       </div>
 
       {/* Main Navigation */}
-      <div className="bg-white border-b border-gray-200">
+      <div className="bg-gray-900 border-b border-gray-700">
         <div className="w-full px-6">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-24">
             {/* Logo and Title Section */}
             <div className="flex items-center space-x-6">
               <div className="flex-shrink-0">
                 <Image
-                  src="/mdoner-logo.svg"
-                  alt="Ministry of Development of North Eastern Region"
-                  width={200}
-                  height={60}
-                  className="h-15 w-auto object-contain"
+                  src="/mdoner-logo-dark.png"
+                  alt="North Eastern Development Council - Ministry of Development of North Eastern Region"
+                  width={320}
+                  height={96}
+                  className="h-16 w-auto object-contain"
                   priority
                 />
               </div>
               <div>
-                <h1 className="text-lg font-bold text-gray-900 leading-tight">
+                <h1 className="text-lg font-bold text-white leading-tight">
                   AI-Powered DPR Assessment System
                 </h1>
-                <p className="text-xs text-gray-600">
+                <p className="text-xs text-gray-300">
                   Quality Assessment & Risk Prediction Portal
                 </p>
               </div>
@@ -107,7 +107,7 @@ const Navigation: React.FC = () => {
                   <a
                     key={item.name}
                     href={item.href}
-                    className="text-gray-700 hover:text-blue-900 font-medium text-sm transition-colors duration-200 relative group px-2 py-1"
+                    className="text-gray-300 hover:text-blue-300 font-medium text-sm transition-colors duration-200 relative group px-2 py-1"
                   >
                     {item.name}
                     <span className="absolute left-0 right-0 bottom-[-4px] h-0.5 bg-blue-900 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
@@ -116,7 +116,7 @@ const Navigation: React.FC = () => {
               </nav>
 
               {/* CTA Button */}
-              <button className="bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+              <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                 Access Portal
               </button>
             </div>
@@ -125,7 +125,7 @@ const Navigation: React.FC = () => {
             <div className="md:hidden">
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="text-gray-700 hover:text-blue-900 p-2"
+                className="text-gray-300 hover:text-blue-300 p-2"
               >
                 {isMobileMenuOpen ? (
                   <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -143,19 +143,19 @@ const Navigation: React.FC = () => {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="md:hidden bg-gray-800 border-t border-gray-700">
             <div className="px-4 py-3 space-y-3">
               {navigationItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block text-gray-700 hover:text-blue-900 font-medium text-sm py-2 transition-colors duration-200"
+                  className="block text-gray-300 hover:text-blue-300 font-medium text-sm py-2 transition-colors duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <button className="w-full bg-blue-900 hover:bg-blue-800 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 mt-4">
+              <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 mt-4">
                 Access Portal
               </button>
             </div>
