@@ -12,7 +12,7 @@ import { AuroraBackground } from '@/components/ui/aurora-background';
 
 export default function HeroSection() {
   return (
-    <AuroraBackground className="h-auto min-h-[80vh]">
+    <AuroraBackground className="h-screen w-full">
       <motion.div
         initial={{ opacity: 0.0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -21,17 +21,16 @@ export default function HeroSection() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-8 items-center justify-center px-6 pt-32 pb-0 z-10"
+        className="relative flex flex-col gap-8 items-center justify-center px-6 h-full w-full z-10 pt-16"
       >
         {/* Main Headline */}
-        <div className="space-y-8 text-center max-w-4xl">
-          <h1 className="text-4xl lg:text-5xl font-bold text-white leading-tight">
-            Transforming Project Evaluation
-            <span className="text-blue-300 block mt-2">Through AI Excellence</span>
+        <div className="space-y-6 text-center max-w-3xl">
+          <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
+            DPR Assessment
+            <span className="text-blue-300 block mt-2">Made Simple</span>
           </h1>
-          <p className="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Empowering transparent, data-driven decisions for Northeast India&apos;s development future. 
-            Advanced AI ensures every project delivers maximum impact for the region.
+          <p className="text-xl text-gray-300 max-w-xl mx-auto">
+            AI-powered project evaluation for Northeast India
           </p>
         </div>
 
@@ -44,35 +43,14 @@ export default function HeroSection() {
         >
           <Link 
             href="#assessment-portal"
-            className="inline-flex items-center justify-center px-10 py-4 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
+            className="inline-flex items-center justify-center px-8 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
-            Begin Assessment Now
-            <ArrowRightIcon className="w-5 h-5 ml-3" />
+            Start Assessment
+            <ArrowRightIcon className="w-5 h-5 ml-2" />
           </Link>
         </motion.div>
 
-        {/* Key Features - Minimal */}
-        <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.8 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-3xl text-center"
-        >
-          <div className="space-y-2">
-            <DocumentTextIcon className="w-8 h-8 text-blue-300 mx-auto" />
-            <h3 className="text-sm font-medium text-white">Document Analysis</h3>
-          </div>
 
-          <div className="space-y-2">
-            <ShieldCheckIcon className="w-8 h-8 text-blue-300 mx-auto" />
-            <h3 className="text-sm font-medium text-white">Risk Assessment</h3>
-          </div>
-
-          <div className="space-y-2">
-            <ChartBarIcon className="w-8 h-8 text-blue-300 mx-auto" />
-            <h3 className="text-sm font-medium text-white">Performance Analytics</h3>
-          </div>
-        </motion.div>
       </motion.div>
     </AuroraBackground>
   );

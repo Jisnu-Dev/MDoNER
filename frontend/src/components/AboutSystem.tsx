@@ -9,6 +9,7 @@ import {
   ClockIcon,
   UsersIcon
 } from '@heroicons/react/24/outline';
+import { GlowCard } from './ui/spotlight-card';
 
 export default function AboutSystem() {
   const features = [
@@ -71,24 +72,31 @@ export default function AboutSystem() {
           </p>
         </motion.div>
 
-        {/* Features Grid */}
+        {/* Features Grid with GlowCards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {features.map((feature, index) => (
+          {features.slice(0, 3).map((feature, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white p-8 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
             >
-              <feature.icon className="w-12 h-12 text-blue-600 mb-6" />
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">
-                {feature.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {feature.description}
-              </p>
+              <GlowCard 
+                glowColor={index === 0 ? 'blue' : index === 1 ? 'purple' : 'green'}
+                customSize={true}
+                className="w-full h-72 p-6"
+              >
+                <div className="flex flex-col items-center text-center space-y-4">
+                  <feature.icon className="w-12 h-12 text-white mb-2" />
+                  <h3 className="text-lg font-semibold text-white">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    {feature.description.split('.')[0]}.
+                  </p>
+                </div>
+              </GlowCard>
             </motion.div>
           ))}
         </div>
