@@ -47,8 +47,8 @@ export default function AboutSystem() {
 
   return (
     <section className="relative">
-      {/* Gradient Transition Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-800 to-gray-50"></div>
+      {/* Dark Background */}
+      <div className="absolute inset-0 bg-black"></div>
       
       {/* Content Container */}
       <div className="relative py-32 pb-20">
