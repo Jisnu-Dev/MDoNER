@@ -10,11 +10,20 @@ const Navigation: React.FC = () => {
   const navigationItems = [
     { name: 'Home', href: '#home' },
     { name: 'About System', href: '#about' },
-    { name: 'Features', href: '#features' },
-    { name: 'Guidelines', href: '#guidelines' },
-    { name: 'Portal', href: '#portal' },
-    { name: 'Support', href: '#support' }
+    { name: 'Features', href: '#features' }
   ];
+
+  const handleScrollTo = (href: string) => {
+    const targetId = href.substring(1); // Remove the '#' from href
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  };
 
   const languages = [
     { code: 'en', name: 'English', nativeName: 'English' },
@@ -58,14 +67,14 @@ const Navigation: React.FC = () => {
               {/* Desktop Navigation */}
               <nav className="flex items-center space-x-6">
                 {navigationItems.map((item) => (
-                  <a
+                  <button
                     key={item.name}
-                    href={item.href}
+                    onClick={() => handleScrollTo(item.href)}
                     className="text-gray-300 hover:text-blue-300 font-medium text-sm transition-colors duration-200 relative group px-2 py-1"
                   >
                     {item.name}
                     <span className="absolute left-0 right-0 bottom-[-4px] h-0.5 bg-blue-900 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-200"></span>
-                  </a>
+                  </button>
                 ))}
               </nav>
 
@@ -155,14 +164,16 @@ const Navigation: React.FC = () => {
           <div className="md:hidden bg-black/80 backdrop-blur-md border-t border-white/20 rounded-b-2xl">
             <div className="px-4 py-3 space-y-3">
               {navigationItems.map((item) => (
-                <a
+                <button
                   key={item.name}
-                  href={item.href}
-                  className="block text-gray-300 hover:text-blue-300 font-medium text-sm py-2 transition-colors duration-200"
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={() => {
+                    handleScrollTo(item.href);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="block text-gray-300 hover:text-blue-300 font-medium text-sm py-2 transition-colors duration-200 w-full text-left"
                 >
                   {item.name}
-                </a>
+                </button>
               ))}
               <button className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 mt-4">
                 Access Portal

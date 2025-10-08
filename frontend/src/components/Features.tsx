@@ -11,6 +11,7 @@ import {
   ClipboardDocumentCheckIcon,
   PresentationChartLineIcon
 } from '@heroicons/react/24/outline';
+import MinimalChart from './ui/minimal-chart';
 
 export default function Features() {
   const features = [
@@ -57,7 +58,7 @@ export default function Features() {
   ];
 
   return (
-    <section className="relative bg-black py-20">
+    <section id="features" className="relative bg-black py-20">
       {/* Content Container */}
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
@@ -76,33 +77,55 @@ export default function Features() {
           </p>
         </motion.div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all duration-300 hover:bg-gray-900/70"
-            >
-              <div className="flex flex-col items-start text-left space-y-4">
-                <div className="p-3 bg-blue-600/20 rounded-lg">
-                  <feature.icon className="w-6 h-6 text-blue-400" />
-                </div>
-                <h3 className="text-lg font-semibold text-white">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+        {/* Simplified Layout: Key Features + Chart */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+          {/* Key Features - Only 4 Most Important */}
+          <div className="space-y-8">
+            <div className="text-left">
+              <h3 className="text-xl font-semibold text-white mb-2">Core Capabilities</h3>
+              <p className="text-gray-400 text-sm">Essential features that power the DPR assessment system</p>
+            </div>
+            
+            <div className="grid grid-cols-1 gap-6">
+              {features.slice(0, 4).map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-gray-900/30 backdrop-blur-sm border border-gray-800 rounded-lg p-5 hover:border-gray-700 transition-all duration-300"
+                >
+                  <div className="flex items-start space-x-4">
+                    <div className="p-2 bg-blue-600/20 rounded-lg flex-shrink-0">
+                      <feature.icon className="w-5 h-5 text-blue-400" />
+                    </div>
+                    <div className="flex-grow">
+                      <h4 className="text-base font-semibold text-white mb-2">
+                        {feature.title}
+                      </h4>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        {feature.description.split('.')[0]}.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
 
-        {/* Feature Highlights */}
+          {/* Chart Section */}
+          <div className="mt-24 lg:mt-32">
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <MinimalChart />
+            </motion.div>
+          </div>
+        </div>        {/* Feature Highlights */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

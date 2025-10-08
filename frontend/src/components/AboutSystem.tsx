@@ -31,7 +31,7 @@ export default function AboutSystem() {
   ];
 
   return (
-    <section className="relative">
+    <section id="about" className="relative">
       {/* Dark Background */}
       <div className="absolute inset-0 bg-black"></div>
       

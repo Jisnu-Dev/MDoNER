@@ -21,7 +21,7 @@ export default function HeroSection() {
   ];
 
   return (
-    <AuroraBackground className="h-screen w-full">
+    <AuroraBackground id="home" className="h-screen w-full">
       <motion.div
         initial={{ opacity: 0.0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
