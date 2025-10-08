@@ -3,8 +3,5 @@
     "src/app/api/**/*.ts": {
       "maxDuration": 10
     }
-  },
-  "env": {
-    "JWT_SECRET": "@jwt-secret"
   }
 }
