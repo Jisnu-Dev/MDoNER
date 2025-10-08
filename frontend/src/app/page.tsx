@@ -5,7 +5,7 @@ import AboutSystem from '@/components/AboutSystem';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col">
+    <div className="min-h-screen bg-gray-50 flex flex-col relative">
       <Navigation />
       
       {/* Main Content Area */}

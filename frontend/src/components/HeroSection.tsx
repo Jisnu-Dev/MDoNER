@@ -21,7 +21,7 @@ export default function HeroSection() {
           duration: 0.8,
           ease: "easeInOut",
         }}
-        className="relative flex flex-col gap-8 items-center justify-center px-6 pt-20 pb-0 z-10"
+        className="relative flex flex-col gap-8 items-center justify-center px-6 pt-32 pb-0 z-10"
       >
         {/* Main Headline */}
         <div className="space-y-8 text-center max-w-4xl">

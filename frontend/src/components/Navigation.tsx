@@ -26,66 +26,20 @@ const Navigation: React.FC = () => {
   const [currentLanguage, setCurrentLanguage] = useState(languages[0]);
 
   return (
-    <header className="w-full bg-gray-900 shadow-lg">
-      {/* Top Government Bar */}
-      <div className="bg-gray-800 text-white">
-        <div className="w-full px-6 py-2">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="flex items-center space-x-2">
-                <div className="w-6 h-6 bg-white rounded-full flex items-center justify-center">
-                  <span className="text-blue-900 text-xs font-bold">🇮🇳</span>
-                </div>
-                <span className="text-sm font-medium">Government of India</span>
-              </div>
-            </div>
-            
-            {/* Language Selector */}
-            <div className="relative">
-              <button
-                onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
-                className="flex items-center space-x-1 bg-white/10 hover:bg-white/20 px-3 py-1 rounded transition-colors"
-              >
-                <span className="text-xs font-medium">{currentLanguage.nativeName}</span>
-                <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-
-              {isLanguageMenuOpen && (
-                <div className="absolute right-0 mt-1 w-40 bg-white rounded-md shadow-lg z-50 border">
-                  {languages.map((language) => (
-                    <button
-                      key={language.code}
-                      onClick={() => {
-                        setCurrentLanguage(language);
-                        setIsLanguageMenuOpen(false);
-                      }}
-                      className="w-full text-left px-3 py-2 text-sm text-gray-700 hover:bg-blue-50 first:rounded-t-md last:rounded-b-md"
-                    >
-                      {language.nativeName}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <header className="w-full fixed top-4 left-0 z-50 bg-transparent px-4">
       {/* Main Navigation */}
-      <div className="bg-gray-900 border-b border-gray-700">
-        <div className="w-full px-6">
-          <div className="flex items-center justify-between h-24">
+      <div className="bg-black/20 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl w-full">
+        <div className="w-full px-8">
+          <div className="flex items-center justify-between h-18">
             {/* Logo and Title Section */}
             <div className="flex items-center space-x-6">
               <div className="flex-shrink-0">
                 <Image
                   src="/mdoner-logo-dark.png"
                   alt="North Eastern Development Council - Ministry of Development of North Eastern Region"
-                  width={320}
-                  height={96}
-                  className="h-16 w-auto object-contain"
+                  width={280}
+                  height={84}
+                  className="h-12 w-auto object-contain"
                   priority
                 />
               </div>
@@ -115,6 +69,61 @@ const Navigation: React.FC = () => {
                 ))}
               </nav>
 
+              {/* Language Selector */}
+              <div className="relative">
+                <button
+                  onClick={() => setIsLanguageMenuOpen(!isLanguageMenuOpen)}
+                  className="flex items-center space-x-2 bg-gradient-to-r from-gray-800 to-gray-700 hover:from-gray-700 hover:to-gray-600 text-white px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 shadow-md hover:shadow-lg border border-gray-600"
+                >
+                  <svg className="h-4 w-4 text-blue-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                  </svg>
+                  <span className="font-medium">{currentLanguage.nativeName}</span>
+                  <svg 
+                    className={`h-4 w-4 transition-transform duration-200 ${isLanguageMenuOpen ? 'rotate-180' : ''}`} 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+
+                {isLanguageMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-2xl z-50 border border-gray-200 overflow-hidden">
+                    <div className="py-1">
+                      {languages.map((language, index) => (
+                        <button
+                          key={language.code}
+                          onClick={() => {
+                            setCurrentLanguage(language);
+                            setIsLanguageMenuOpen(false);
+                          }}
+                          className={`w-full text-left px-4 py-3 text-sm transition-all duration-200 flex items-center justify-between group ${
+                            currentLanguage.code === language.code 
+                              ? 'bg-blue-50 text-blue-700 border-l-4 border-blue-500' 
+                              : 'text-gray-700 hover:bg-gray-50'
+                          }`}
+                        >
+                          <div className="flex items-center space-x-3">
+                            <span className="font-medium">{language.nativeName}</span>
+                            <span className="text-xs text-gray-500">({language.name})</span>
+                          </div>
+                          {currentLanguage.code === language.code && (
+                            <svg className="h-4 w-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                            </svg>
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                    <div className="border-t border-gray-100 px-4 py-2 bg-gray-50">
+                      <p className="text-xs text-gray-500 text-center">Select your preferred language</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
               {/* CTA Button */}
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                 Access Portal
@@ -143,7 +152,7 @@ const Navigation: React.FC = () => {
 
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-gray-800 border-t border-gray-700">
+          <div className="md:hidden bg-black/80 backdrop-blur-md border-t border-white/20 rounded-b-2xl">
             <div className="px-4 py-3 space-y-3">
               {navigationItems.map((item) => (
                 <a
