@@ -2,6 +2,7 @@ import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import HeroSection from '@/components/HeroSection';
 import AboutSystem from '@/components/AboutSystem';
+import Features from '@/components/Features';
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <main className="flex-grow">
         <HeroSection />
         <AboutSystem />
+        <Features />
       </main>
 
       <Footer />
