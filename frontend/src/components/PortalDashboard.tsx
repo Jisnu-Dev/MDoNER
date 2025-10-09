@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { auth, User } from '@/lib/auth';
+import Navigation from '@/components/Navigation';
 
 const PortalContent: React.FC = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -39,7 +40,7 @@ const PortalContent: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900 py-20 px-6">
+    <div className="min-h-screen bg-black py-20 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="bg-black/20 backdrop-blur-md border border-white/20 rounded-2xl p-8 mb-8">
@@ -155,56 +156,8 @@ const MDoNERDashboard: React.FC = () => {
 
 const ClientDashboard: React.FC = () => {
   return (
-    <div className="grid md:grid-cols-2 gap-6">
-      <div className="bg-black/20 backdrop-blur-md border border-white/20 rounded-2xl p-6">
-        <div className="flex items-center mb-4">
-          <div className="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center mr-4">
-            <span className="text-2xl">📄</span>
-          </div>
-          <div>
-            <h3 className="text-white font-semibold">Submit DPR</h3>
-            <p className="text-gray-400 text-sm">Upload project documents</p>
-          </div>
-        </div>
-        <div className="text-blue-300 text-2xl font-bold">3</div>
-        <p className="text-gray-400 text-sm">Active submissions</p>
-      </div>
-
-      <div className="bg-black/20 backdrop-blur-md border border-white/20 rounded-2xl p-6">
-        <div className="flex items-center mb-4">
-          <div className="w-12 h-12 bg-green-600/20 rounded-lg flex items-center justify-center mr-4">
-            <span className="text-2xl">✅</span>
-          </div>
-          <div>
-            <h3 className="text-white font-semibold">Track Status</h3>
-            <p className="text-gray-400 text-sm">Monitor review progress</p>
-          </div>
-        </div>
-        <div className="text-green-300 text-2xl font-bold">2</div>
-        <p className="text-gray-400 text-sm">Approved projects</p>
-      </div>
-
-      <div className="md:col-span-2 bg-black/20 backdrop-blur-md border border-white/20 rounded-2xl p-6">
-        <h3 className="text-white font-semibold mb-4">🎯 Client Portal Functions</h3>
-        <div className="grid md:grid-cols-2 gap-4">
-          <button className="bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 text-blue-300 p-4 rounded-lg text-left transition-colors">
-            <div className="font-semibold mb-1">New DPR Submission</div>
-            <div className="text-sm opacity-80">Start a new project assessment</div>
-          </button>
-          <button className="bg-green-600/20 hover:bg-green-600/30 border border-green-500/30 text-green-300 p-4 rounded-lg text-left transition-colors">
-            <div className="font-semibold mb-1">View Assessment Results</div>
-            <div className="text-sm opacity-80">Check your project evaluations</div>
-          </button>
-          <button className="bg-purple-600/20 hover:bg-purple-600/30 border border-purple-500/30 text-purple-300 p-4 rounded-lg text-left transition-colors">
-            <div className="font-semibold mb-1">Download Reports</div>
-            <div className="text-sm opacity-80">Get detailed assessment reports</div>
-          </button>
-          <button className="bg-orange-600/20 hover:bg-orange-600/30 border border-orange-500/30 text-orange-300 p-4 rounded-lg text-left transition-colors">
-            <div className="font-semibold mb-1">Support & Guidance</div>
-            <div className="text-sm opacity-80">Get help with your submissions</div>
-          </button>
-        </div>
-      </div>
+    <div className="w-full min-h-screen bg-black">
+      <Navigation />
     </div>
   );
 };

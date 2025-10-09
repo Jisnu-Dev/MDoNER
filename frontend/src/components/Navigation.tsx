@@ -1,12 +1,17 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter, usePathname } from 'next/navigation';
+import { auth } from '@/lib/auth';
 
 const Navigation: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const router = useRouter();
+  const pathname = usePathname();
 
   const navigationItems = [
     { name: 'Home', href: '#home' },
@@ -34,6 +39,28 @@ const Navigation: React.FC = () => {
   ];
 
   const [currentLanguage, setCurrentLanguage] = useState(languages[0]);
+
+  useEffect(() => {
+    // Check authentication status on component mount and route changes
+    const checkAuth = () => {
+      setIsAuthenticated(auth.isAuthenticated());
+    };
+    checkAuth();
+    // Listen for storage changes (when auth state changes in other tabs/components)
+    const handleStorageChange = () => {
+      checkAuth();
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, [pathname]);
+
+  const handleLogout = () => {
+    auth.logout();
+    router.push('/');
+    // Don't update state immediately - let the route change handle it
+  };
 
   return (
     <header className="w-full fixed top-4 left-0 z-50 bg-transparent px-4">
@@ -137,9 +164,18 @@ const Navigation: React.FC = () => {
               </div>
 
               {/* CTA Button */}
-              <Link href="/login" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
-                Access Portal
-              </Link>
+              {isAuthenticated ? (
+                <button
+                  onClick={handleLogout}
+                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+                >
+                  Logout
+                </button>
+              ) : (
+                <Link href="/login" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                  Access Portal
+                </Link>
+              )}
             </div>
 
             {/* Mobile menu button */}
@@ -178,9 +214,21 @@ const Navigation: React.FC = () => {
                   {item.name}
                 </button>
               ))}
-              <Link href="/login" className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 mt-4 block text-center">
-                Access Portal
-              </Link>
+              {isAuthenticated ? (
+                <button
+                  onClick={() => {
+                    handleLogout();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 mt-4 block text-center"
+                >
+                  Logout
+                </button>
+              ) : (
+                <Link href="/login" className="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 mt-4 block text-center">
+                  Access Portal
+                </Link>
+              )}
             </div>
           </div>
         )}
