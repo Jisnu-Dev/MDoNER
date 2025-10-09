@@ -14,9 +14,7 @@ const Navigation: React.FC = () => {
   const pathname = usePathname();
 
   const navigationItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'About System', href: '#about' },
-    { name: 'Features', href: '#features' }
+    { name: 'Add & Manage DPR', href: '#manage-dpr' }
   ];
 
   const handleScrollTo = (href: string) => {
@@ -65,7 +63,7 @@ const Navigation: React.FC = () => {
   return (
     <header className="w-full fixed top-4 left-0 z-50 bg-transparent px-4">
       {/* Main Navigation */}
-      <div className="bg-black/20 backdrop-blur-md border border-white/20 rounded-2xl shadow-2xl w-full">
+      <div className="bg-black/20 backdrop-blur-md border border-white/30 rounded-2xl shadow-2xl w-full">
         <div className="w-full px-8">
           <div className="flex items-center justify-between h-18">
             {/* Logo and Title Section */}
